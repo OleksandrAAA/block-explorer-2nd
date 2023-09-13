@@ -50,6 +50,8 @@ typings/
 
 # Output of 'npm pack'
 *.tgz
+/public/*.gz
+/public/*.map
 
 # Yarn Integrity file
 .yarn-integrity
@@ -67,5 +69,4 @@ config.js
 
 .idea
 /public/*.js
-/public/*.gz
 /public/*.html

@@ -33,7 +33,6 @@ class Movement extends Component {
   };
 
   componentDidMount() {
-    this.props.setData({isToken: false});
     this.getTXs();
   };
 

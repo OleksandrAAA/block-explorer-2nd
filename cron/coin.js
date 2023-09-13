@@ -14,14 +14,12 @@ const UTXO = require('../model/utxo');
  * like price coinmarketcap.com data.
  */
 async function syncCoin() {
-  console.log('syncCoin');
   const date = moment().utc().startOf('minute').toDate();
   // Setup the coinmarketcap.com api url.
   //const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }`;
   const url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1281&CMC_PRO_API_KEY=5ca8732a-1676-4d5b-807b-eae694fee117";
   const info = await rpc.call('getinfo');
   const txOutinfo = await rpc.call('gettxoutsetinfo');
-  console.log(info);
   const masternodes = await rpc.call('masternode', ['count']);
   const nethashps = await rpc.call('getnetworkhashps');
   const utxo = await UTXO.aggregate([
@@ -32,14 +30,12 @@ async function syncCoin() {
 
   let market = await fetch(url);
   if (Array.isArray(market)) {
-    console.log('array');
     market = market.length ? market['data'] : {};
   }
   if (market.status.error_code == 0){
     market = market['data']['1281'];
   } 
-  console.log('utxo',utxo);
-  console.log(market);
+
   const coin = new Coin({
     cap: market.quote.USD.market_cap,
     createdAt: date,
@@ -67,7 +63,6 @@ async function update() {
 
   try {
     locker.lock(type);
-    console.log('calling syncCoin');
     await syncCoin();
   } catch(err) {
     console.log(err);

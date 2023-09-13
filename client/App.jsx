@@ -169,6 +169,7 @@ class App extends Component {
                   <Route exact path="/faq" component={ FAQ } />
                   <Route exact path="/movement" component={ Movement } />
                   <Route exact path="/peer" component={ Peer } />
+                  <Route exact path="/top100" component={ Top100 } />
                   <Route exact path="/statistics" component={ Statistics } />
                   <Route exact path="/tx/:hash" component={ TX } />
                   <Route component={ Error404 } />

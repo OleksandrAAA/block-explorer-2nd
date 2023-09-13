@@ -1,7 +1,7 @@
 const APIdata = [
   {
     heading: 'API Calls',
-    subHeading: 'Return data from coind',
+    subHeading: 'Return data from chesscoind',
     calls: [
         {
           name: 'getAddress [hash]',
@@ -67,6 +67,11 @@ const APIdata = [
           name: 'getSupply',
           info: 'Returns circulating and total supply information.<br />https://github.com/coincheckup/crypto-supplies',
           path: '/api/supply'
+        },
+        {
+          name: 'getTop100',
+          info: 'Returns top 100',
+          path: '/api/top100'
         },
         {
           name: 'getTXs',

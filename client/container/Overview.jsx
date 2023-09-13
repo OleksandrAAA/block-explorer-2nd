@@ -12,6 +12,8 @@ import React from 'react';
 import HorizontalRule from '../component/HorizontalRule';
 import Table from '../component/Table';
 import CoinSummary from '../container/CoinSummary';
+
+
 class Overview extends Component {
   static propTypes = {
     txs: PropTypes.array.isRequired,
@@ -57,11 +59,12 @@ class Overview extends Component {
         vout: numeral(blockValue).format('0,0.0000')
       });
     });
+    
     let props = this.props;
-    console.log('overview props', props);
     return (
       <div>
-        <HorizontalRule title="Latest Blocks" />
+        <HorizontalRule 
+          title="Latest Blocks" />
         <Table
           cols={ this.state.cols }
           data={ txs } />

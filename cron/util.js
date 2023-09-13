@@ -115,7 +115,6 @@ async function vout(rpctx, blockHeight) {
       }
 
       if (typeof(vout.token) != "undefined"){
-        console.log('vout token', vout.token)
         tokenName = vout.token.name;
         tokenURL = vout.token.URL;
         tokenDecimalPos = vout.token.decimalPos;
@@ -123,7 +122,7 @@ async function vout(rpctx, blockHeight) {
         tokenDocHash = vout.token.documentHash;
         tokenAuthorities = vout.token.authorities;
       }
-      console.log('vout', vout);
+
       const to = {
         blockHeight,
         address: address,

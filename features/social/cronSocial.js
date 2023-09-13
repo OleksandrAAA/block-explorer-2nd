@@ -43,9 +43,7 @@ async function update() {
   try {
     locker.lock(type);
 
-    console.log('Syncing social...');
     await syncSocial();
-    console.log('Syncing complete!');
 
   } catch (err) {
     console.log(err);

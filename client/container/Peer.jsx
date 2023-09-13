@@ -28,7 +28,6 @@ class Peer extends Component {
   };
 
   componentDidMount() {
-    this.props.setData({isToken: false});
     this.props
       .getPeers()
       .then(peers => this.setState({ peers, loading: false }))

@@ -32,7 +32,6 @@ class Statistics extends Component {
   };
 
   componentDidMount() {
-    this.props.setData({isToken: false});
     Promise.all([
         this.props.getCoins(),
         this.props.getTXs()
@@ -121,7 +120,7 @@ class Statistics extends Component {
 
     return (
       <div className="animated fadeInUp">
-        <HorizontalRule title="Statistics" />
+        <HorizontalRule title="Markets" />
         { Array.from(hashes.keys()).slice(1, -1).length <= 6 && <Notification /> }
         <div>
           <div className="row">

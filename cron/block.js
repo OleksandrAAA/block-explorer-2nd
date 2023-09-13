@@ -57,8 +57,6 @@ async function syncBlocks(start, stop, clean = false) {
         await util.addPoW(block, rpctx);
       }
     });
-
-    console.log(`Height: ${ block.height } Hash: ${ block.hash }`);
   }
 }
 
@@ -86,7 +84,7 @@ async function update() {
       clean = true;
       rpcHeight = parseInt(process.argv[3], 10);
     }
-    console.log(dbHeight, rpcHeight, clean);
+
     // If nothing to do then exit.
     if (dbHeight >= rpcHeight) {
       return;

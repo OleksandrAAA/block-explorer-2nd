@@ -111,9 +111,7 @@ async function getVerified(url, creator, signature){
     "creator": creator,
     "signature": signature
   });
- console.log('-------------------String Body----------------------');
- console.log(string_body);
- console.log('-----------------------------------------------------');
+
   const res = await fetch("http://localhost:8000/verifymessage", {
     method: "POST",
     headers: {
@@ -167,8 +165,7 @@ async function syncTokens() {
 
     try {
       let response = await fetch(token.URL);
-      console.log('response');
-      let res = await response.json();
+       let res = await response.json();
       const docData = ValidateDocument(res);
       if (docData){
         token.docChain = docData[0].chain;
@@ -183,11 +180,7 @@ async function syncTokens() {
 
         let responsefortext = await fetch(token.URL);
         let textData = await responsefortext.text();
-        //const docHash = getDocumentHash(textData);
-        //console.log('docHash', docHash);
-        //if (docHash){
-         // token.docHash = docHash;
-        //}
+
         if (token.docCreator != "" && token.docSignature != ""){
 
           const res = await getVerified(token.URL, token.creator, token.docSignature);
@@ -201,8 +194,7 @@ async function syncTokens() {
     }
     inserts.push(token);
   }
-  console.log('---------------------------------------------------');
-  console.log(inserts);
+
   // await forEach(tokens, async (tk) => {
   //   const scaninfo = await rpc.call('scantokens', ["start", tk.groupIdentifier]);
   //   const token = new Token({

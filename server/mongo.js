@@ -1,4 +1,3 @@
-
 const config = require('../config');
 const db = require('../lib/db');
 const mongoose = require('mongoose');
@@ -11,8 +10,14 @@ if (!config.db.user || !config.db.pass) {
 
 /* Database */
 // Connect to the database.
-mongoose.connect(db.getDSN(), db.getOptions());
+var dbString = 'mongodb://' + encodeURIComponent(config.db.user);
+dbString = dbString + ':' + encodeURIComponent(config.db.pass);
+dbString = dbString + '@' + config.db.host;
+dbString = dbString + ':' + config.db.port;
+dbString = dbString + '/' + config.db.name;
 
-/* Add User */
-// Create the database user.
-mongoose.connection.db.addUser(config.db.user, config.db.pass);
+mongoose.set('strictQuery', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true);
+
+mongoose.connect(dbString);

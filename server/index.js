@@ -13,7 +13,6 @@ if (cluster.isMaster) {
     cpus = parseInt(process.argv[2], 10);
   }
 
-  console.log('Start', cpus, 'workers');
   for (let i = 0; i < cpus; i++) {
     cluster.fork();
   }
@@ -34,7 +33,15 @@ else {
 
   /* Database */
   // Connect to the database.
-  mongoose.connect(db.getDSN(), db.getOptions());
+  var dbString = 'mongodb://' + encodeURIComponent(config.db.user);
+  dbString = dbString + ':' + encodeURIComponent(config.db.pass);
+  dbString = dbString + '@' + config.db.host;
+  dbString = dbString + ':' + config.db.port;
+  dbString = dbString + '/' + config.db.name;
+  mongoose.set('strictQuery', true);
+  mongoose.set('useNewUrlParser', true);
+  mongoose.set('useUnifiedTopology', true);
+  mongoose.connect(dbString);
 
   /* API */
   // Setup the application.

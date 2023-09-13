@@ -58,14 +58,12 @@ export const getTokens = (dispatch, query) => {
     return getFromWorker(
       'tokens',
       (payload) => {
-        console.log('get tokens', payload);
         if (dispatch) {
           dispatch({ payload, type: DATA });
         }
         resolve(payload);
       },
       (payload) => {
-        console.log('get tokens error', payload);
         if (dispatch) {
           dispatch({ payload, type: ERROR });
         }
@@ -140,6 +138,18 @@ export const getPeers = () => {
       },
       reject
     );
+  });
+};
+
+export const getSupply = (dispatch) => {
+  return new promise((resolve, reject) => {
+    return getFromWorker('supply', resolve, reject);
+  });
+};
+
+export const getTop100 = () => {
+  return new promise((resolve, reject) => {
+    return getFromWorker('top-100', resolve, reject);
   });
 };
 
@@ -221,6 +231,8 @@ export default {
   getCoinsWeek,
   getIsBlock,
   getMNs,
+  getSupply,
+  getTop100,
   getTokens,
   getToken,
   getPeers,

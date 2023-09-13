@@ -41,7 +41,7 @@ export default class CardStatus extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Blocks:</span>
+          <span className="card__label">Block Height:</span>
           <span className="card__result">
             <Link to={ `/block/${ this.props.blocks }` }>
               <b>
@@ -55,11 +55,11 @@ export default class CardStatus extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Total Supply:</span>
+          <span className="card__label">Coin Supply <span class="small fw-normal">(CHESS)</span>:</span>
           <span className="card__result">
               <b>
                 <CountUp
-                  decimals={ 4 }
+                  decimals={ 2 }
                   duration={ 1 }
                   end={ this.props.supply }
                   start={ 0 } />
@@ -67,14 +67,14 @@ export default class CardStatus extends Component {
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Peers:</span>
+          <span className="card__label">Known Peers:</span>
           <span className="card__result">
             <Link to="/peer">{ this.props.peers }</Link>
           </span>
         </div>
         <div className="card__row">
-          <span className="card__label">Avg. Block Time:</span>
-          <span className="card__result">{ this.props.avgBlockTime.toFixed(2) } seconds</span>
+          <span className="card__label">Difficulty:</span>
+          <span className="card__result">{ this.props.avgBlockTime.toFixed(4) }</span>
         </div>
       </Card>
       </div>

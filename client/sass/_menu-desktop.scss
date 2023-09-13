@@ -76,9 +76,12 @@
 
 	&__logo {
 		height: auto;
-		margin-right: 2em;
+		margin-top: 0.75em;
+		margin-right: 0.75em;
+		margin-left: 1em;
 		/* Used to align with searchbar */
 		width: 140px;
+		scale: 0.9;
 	}
 
 	&__title {
@@ -104,9 +107,9 @@
 	}
 
 	&__item-icon {
-		height: 24px;
+		height: 28px;
 		transition: all 1s cubic-bezier(0, 1, .5, 1);
-		width: 24px;
+		width: 28px;
 	}
 
 	&__item-label {
