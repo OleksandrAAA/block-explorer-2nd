@@ -1,6 +1,7 @@
-Bulwark Block Explorer 
+Bulwark - Adapted for Chesscoin 0.32%
 =====
-[![GitHub license](https://img.shields.io/github/license/bulwark-crypto/bulwark-explorer.svg)](https://github.com/bulwark-crypto/bulwark-explorer/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/bulwark-crypto/bulwark-explorer.svg)](https://github.com/bulwark-crypto/bulwark-explorer/issues) [![Discord](https://img.shields.io/discord/374271866308919296.svg)](https://discord.me/bulwarkcrypto) <a href="https://twitter.com/intent/follow?screen_name=bulwarkcoin"> <img src="https://img.shields.io/twitter/follow/bulwarkcoin.svg?style=social&logo=twitter" alt="follow on Twitter"></a>
+https://explorer.chesscoin032.com/
+
 
 Simple cryptocurrency block explorer system.
 
@@ -15,13 +16,8 @@ https://nodejs.org/en/download/package-manager/
 
 https://yarnpkg.com/lang/en/docs/install/
 
-It is also required to have the Bulwark daemon running in the background. It is recommended to set this up before beginning to set up the explorer so that it syncs by the time you need it.
+It is also required to have the Chesscoin daemon running in the background. It is recommended to set this up before beginning to set up the explorer so that it syncs by the time you need it.
 
-Our geniuses here at BulwarkCorp™ have put together a script to do this for you. Just run
-
-`bash script/bulwarkd_setup.sh`
-
-This will install the latest Bulwark wallet and create a rpc username/password before starting the daemon.
 
 ## Install
 `git clone https://github.com/bulwark-crypto/bulwark-explorer.git` - copy repo to local folder.
