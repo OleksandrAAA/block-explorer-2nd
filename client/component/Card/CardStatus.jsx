@@ -14,7 +14,8 @@ export default class CardStatus extends Component {
     blocks: 0,
     peers: 0,
     status: 'Offline',
-    supply: 0
+    supply: 0,
+    diff: 0,
   };
 
   static propTypes = {
@@ -23,7 +24,8 @@ export default class CardStatus extends Component {
     blocks: PropTypes.number.isRequired,
     peers: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
-    supply: PropTypes.number.isRequired
+    supply: PropTypes.number.isRequired,
+    diff: PropTypes.number.isRequired
   };
 
   render() {
@@ -59,8 +61,9 @@ export default class CardStatus extends Component {
           <span className="card__result">
               <b>
                 <CountUp
-                  decimals={ 2 }
+                  decimals={ 0 }
                   duration={ 1 }
+                  separator=","
                   end={ this.props.supply }
                   start={ 0 } />
               </b>
@@ -74,7 +77,13 @@ export default class CardStatus extends Component {
         </div>
         <div className="card__row">
           <span className="card__label">Difficulty:</span>
-          <span className="card__result">{ this.props.avgBlockTime.toFixed(4) }</span>
+          <span className="card__result">
+            <CountUp
+                decimals={ 4 }
+                duration={ 1 }
+                end={ this.props.diff }
+                start={ 0 } />
+          </span>
         </div>
       </Card>
       </div>

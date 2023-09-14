@@ -7,7 +7,6 @@ const locker = require('../lib/locker');
 const moment = require('moment');
 // Models.
 const Coin = require('../model/coin');
-const UTXO = require('../model/utxo');
 
 /**
  * Get the coin related information including things
@@ -16,39 +15,29 @@ const UTXO = require('../model/utxo');
 async function syncCoin() {
   const date = moment().utc().startOf('minute').toDate();
   // Setup the coinmarketcap.com api url.
-  //const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }`;
-  const url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1281&CMC_PRO_API_KEY=5ca8732a-1676-4d5b-807b-eae694fee117";
+  //const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }`;  // bulwark
+  //const url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1281&CMC_PRO_API_KEY=5ca8732a-1676-4d5b-807b-eae694fee117";  // ion
+  const url = "https://api.coingecko.com/api/v3/coins/chesscoin-0-32?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false";
   const info = await rpc.call('getinfo');
-  const txOutinfo = await rpc.call('gettxoutsetinfo');
-  const masternodes = await rpc.call('masternode', ['count']);
-  const nethashps = await rpc.call('getnetworkhashps');
-  const utxo = await UTXO.aggregate([
-    {$match: {address: {$ne: 'ZERO_COIN_MINT'}}},
-    {$match: {address: {$not: /OP_RETURN/}}},
-    {$group: {_id: 'supply', total: {$sum: '$value'}}}
-  ])
 
   let market = await fetch(url);
-  if (Array.isArray(market)) {
-    market = market.length ? market['data'] : {};
+  if (market && market.market_data) {    
+    market = market['market_data'];
   }
-  if (market.status.error_code == 0){
-    market = market['data']['1281'];
-  } 
 
   const coin = new Coin({
-    cap: market.quote.USD.market_cap,
+    cap: 0,
     createdAt: date,
     blocks: info.blocks,
-    btc: '0.0000000357',
-    diff: info.difficulty,
-    mnsOff: masternodes.total - masternodes.enabled,
-    mnsOn: masternodes.enabled,
-    netHash: nethashps,
+    btc: market.current_price.btc,
+    diff: info['difficulty']['proof-of-stake'],
+    mnsOff: 0,
+    mnsOn: 0,
+    nethash: 0,
     peers: info.connections,
     status: 'Online',
-    supply: txOutinfo.total_amount,  //count(utxo) == utxo[0].total + 
-    usd: market.quote.USD.price
+    supply: market.total_supply,
+    usd: market.current_price.usd
   });
 
   await coin.save();

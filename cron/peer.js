@@ -21,9 +21,6 @@ async function syncPeer() {
   let inserts = [];
   await forEach(peers, async (peer) => {
     const parts = peer.addr.split(':');
-    if (parts[0].substr(0, 1) === '[') {
-      return;
-    }
 
     if (!peer.subver) {
       return
@@ -34,15 +31,15 @@ async function syncPeer() {
 
     const p = new Peer({
       _id: parts[0],
-      country: geoip.country,
-      countryCode: geoip.countryCode,
+      country: geoip.country_name,
+      countryCode: geoip.country_code,
       createdAt: date,
       ip: parts[0],
-      lat: geoip.lat,
-      lon: geoip.lon,
+      lat: geoip.latitude,
+      lon: geoip.longitude,
       port: parts[1] ? parts[1] : 0,
       subver: peer.subver,
-      timeZone: geoip.region,
+      timeZone: geoip.time_zone,
       ver: peer.version
     });
 

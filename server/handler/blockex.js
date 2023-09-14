@@ -421,62 +421,6 @@ const getPeer = (req, res) => {
 };
 
 /**
- * Get coin circulating supply information for usage.
- * @param {Object} req The request object.
- * @param {Object} res The response object.
- */
-const getCirculatingSupply = async (req, res) => {
-  try {
-    let circulatingSupply = 0;
-    let totalSupply = 0;
-
-    const api = `${ config.api.host }/ext`;
-    const devFundOne = await fetch(`${ api }/getbalance/ikHbMe6SHea4MHxc1psfPE7eVhhof4v1SN`);
-    const devFundTwo = await fetch(`${ api }/getbalance/iereuy4Vn96x8oUwXEj5E5FKNeA8uHcabv`);
-
-    const utxo = await UTXO.aggregate([
-      {$match: {address: {$ne: 'ZERO_COIN_MINT'}}},
-      { $group: { _id: 'supply', total: { $sum: '$value' } } }
-    ]);
-
-    const info = await rpc.call('getinfo');
-
-    totalSupply = utxo[0].total + info.xIONsupply.total;
-    circulatingSupply = totalSupply - devFundOne - devFundTwo;
-
-    res.json(circulatingSupply);
-  } catch(err) {
-    console.log(err);
-    res.status(500).send(err.message || err);
-  }
-};
-
-/**
- * Get coin total supply information for usage.
- * @param {Object} req The request object.
- * @param {Object} res The response object.
- */
-const getTotalSupply = async (req, res) => {
-  try {
-    let totalSupply = 0;
-
-    const utxo = await UTXO.aggregate([
-      {$match: {address: {$ne: 'ZERO_COIN_MINT'}}},
-      { $group: { _id: 'supply', total: { $sum: '$value' } } }
-    ]);
-
-    const info = await rpc.call('getinfo');
-
-    totalSupply = utxo[0].total + info.xIONsupply.total;
-
-    res.json(totalSupply);
-  } catch(err) {
-    console.log(err);
-    res.status(500).send(err.message || err);
-  }
-};
-
-/**
  * Get coin supply information for usage.
  * https://github.com/coincheckup/crypto-supplies
  * @param {Object} req The request object.
@@ -671,8 +615,6 @@ module.exports =  {
   getMasternodeByAddress,
   getMasternodeCount,
   getPeer,
-  getCirculatingSupply,
-  getTotalSupply,
   getSupply,
   getTop100,
   getTXLatest,

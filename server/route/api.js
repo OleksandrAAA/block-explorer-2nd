@@ -18,8 +18,6 @@ router.get('/masternode/average', blockex.getAvgMNTime());
 router.get('/masternode/:hash', blockex.getMasternodeByAddress);
 router.get('/masternodecount', blockex.getMasternodeCount);
 router.get('/peer', blockex.getPeer);
-router.get('/circulating_supply', blockex.getCirculatingSupply);
-router.get('/total_supply', blockex.getTotalSupply);
 router.get('/supply', blockex.getSupply);
 router.get('/top100', blockex.getTop100);
 router.get('/tx', blockex.getTXs);

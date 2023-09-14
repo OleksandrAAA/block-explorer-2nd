@@ -40,68 +40,39 @@ class CoinSummary extends Component {
       : this.props.searches.slice(0, 7);
     let props = this.props;
 
-    if (props.data.isToken){
-      return (
-        <div>
-          <div className="row">
-            <div className="col-md-12 col-lg-9">
-              <div className="row">
-                <div className="col-md-12 col-lg-6">
-                  <CardTokenInfo
-                    avgBlockTime={ coin.avgBlockTime?coin.avgBlockTime:0 }
-                    avgMNTime={ coin.avgMNTime?coin.avgMNTime:0 }
-                    blocks={ height }
-                    peers={ coin.peers }
-                    status={ coin.status }
-                    supply={ coin.supply }  />
-                </div>
-                <div className="col-md-12 col-lg-6">
-                  <CardMarket
-                    btc={ coin.btc }
-                    usd={ coin.usd }
-                    xAxis={ this.props.coins.map(c => c.createdAt) }
-                    yAxis={ this.props.coins.map(c => c.usd ? c.usd : 0.0) } />
-                </div>
+    return (
+      <div>
+        <div className="row">
+          <div className="col-md-12 col-lg-9">
+            <div className="row">
+              <div className="col-md-12 col-lg-6">
+                <CardStatus
+                  avgBlockTime={ coin.avgBlockTime?coin.avgBlockTime:0 }
+                  avgMNTime={ coin.avgMNTime?coin.avgMNTime:0 }
+                  blocks={ height }
+                  peers={ coin.peers }
+                  status={ coin.status }
+                  supply={ coin.supply } 
+                  diff={ coin.diff } />
+              </div>
+              <div className="col-md-12 col-lg-6">
+                <CardMarket
+                  btc={ coin.btc }
+                  usd={ coin.usd }
+                  xAxis={ this.props.coins.map(c => c.createdAt) }
+                  yAxis={ this.props.coins.map(c => c.usd ? c.usd : 0.0) } />
               </div>
             </div>
           </div>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <div className="row">
-            <div className="col-md-12 col-lg-9">
-              <div className="row">
-                <div className="col-md-12 col-lg-6">
-                  <CardStatus
-                    avgBlockTime={ coin.avgBlockTime?coin.avgBlockTime:0 }
-                    avgMNTime={ coin.avgMNTime?coin.avgMNTime:0 }
-                    blocks={ height }
-                    peers={ coin.peers }
-                    status={ coin.status }
-                    supply={ coin.supply }  />
-                </div>
-                <div className="col-md-12 col-lg-6">
-                  <CardMarket
-                    btc={ coin.btc }
-                    usd={ coin.usd }
-                    xAxis={ this.props.coins.map(c => c.createdAt) }
-                    yAxis={ this.props.coins.map(c => c.usd ? c.usd : 0.0) } />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-12 col-lg-3">
-              <WatchList
-                items={ watchlist }
-                onSearch={ this.props.onSearch }
-                onRemove={ this.props.onRemove } />
-            </div>
+          <div className="col-md-12 col-lg-3">
+            <WatchList
+              items={ watchlist }
+              onSearch={ this.props.onSearch }
+              onRemove={ this.props.onRemove } />
           </div>
         </div>
-      );
-    }
-
+      </div>
+    );
   };
 }
 

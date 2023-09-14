@@ -14,7 +14,8 @@ export default class CardTokensInfo extends Component {
     blocks: 0,
     peers: 0,
     status: 'Offline',
-    supply: 0
+    supply: 0,
+    difficulty: 0
   };
 
   static propTypes = {
@@ -23,7 +24,8 @@ export default class CardTokensInfo extends Component {
     blocks: PropTypes.number.isRequired,
     peers: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
-    supply: PropTypes.number.isRequired
+    supply: PropTypes.number.isRequired,
+    difficulty: PropTypes.number.isRequired
   };
 
   render() {

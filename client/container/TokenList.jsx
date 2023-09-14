@@ -33,7 +33,7 @@ class TokenList extends Component {
   };
 
   componentDidMount() {
-    this.props.setData({isToken: true});
+    this.props.setData({isToken: false});
     this.getTokens();
   };
 

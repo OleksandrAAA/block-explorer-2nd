@@ -59,7 +59,7 @@ export default class CardStatus extends Component {
               </span>
               <span>In { this.props.xAxis.length * 5 } minutes</span>
             </p>
-            <p className="card__info-source">Data from CoinMarketCap</p>
+            <p className="card__info-source">Data from Coingecko</p>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-8">
             <GraphLine
