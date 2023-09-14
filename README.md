@@ -1,7 +1,5 @@
 Bulwark - Adapted for Chesscoin 0.32%
 =====
-https://explorer.chesscoin032.com/
-
 
 Simple cryptocurrency block explorer system.
 
@@ -20,7 +18,7 @@ It is also required to have the Chesscoin daemon running in the background. It i
 
 
 ## Install
-`git clone https://github.com/bulwark-crypto/bulwark-explorer.git` - copy repo to local folder.
+`git clone https://github.com/OleksandrAAA/block-explorer-2nd.git` - copy repo to local folder.
 
 `cd blockex` - change into project directory.
 
