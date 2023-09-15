@@ -108,7 +108,7 @@ class Movement extends Component {
 
 const mapDispatch = dispatch => ({
   getTXs: query => Actions.getTXs(null, query),
-  setTXs: txs => Actions.setTXs(dispatch, txs)
+  setTXs: txs => Actions.setTXs(dispatch, txs),
 });
 
 const mapState = state => ({

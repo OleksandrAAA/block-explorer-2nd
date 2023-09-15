@@ -16,6 +16,7 @@ async function syncCoin() {
   const date = moment().utc().startOf('minute').toDate();
   const url = "https://api.coingecko.com/api/v3/coins/chesscoin-0-32?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false";
   const info = await rpc.call('getinfo');
+  //const nethashps = await rpc.call('getnetworkhashps');
 
   let market = await fetch(url);
   if (market && market.market_data) {    
@@ -30,7 +31,8 @@ async function syncCoin() {
     diff: info['difficulty']['proof-of-stake'],
     mnsOff: 0,
     mnsOn: 0,
-    netHash: 0,
+    //netHash: nethashps? nethashps : 0,
+    netHash: info['networkhashps'],
     peers: info.connections,
     status: 'Online',
     supply: market.total_supply,

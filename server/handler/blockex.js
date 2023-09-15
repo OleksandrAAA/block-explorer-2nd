@@ -33,34 +33,42 @@ const getAddress = async (req, res) => {
 
     const sent = txs.filter(tx => tx.vout[0].address !== 'NON_STANDARD')
       .reduce((acc, tx) => acc.plus(tx.vin.reduce((a, t) => {
-        if (t.address === req.params.hash) {
-          return a.plus(BigNumber(t.value))
-        } else {
-          return a
+        if (req.params) {
+          if (t.address === req.params.hash) {
+            return a.plus(BigNumber(t.value))
+          } else {
+            return a
+          }
         }
       }, BigNumber(0.0))), BigNumber(0.0))
 
     const received = txs.filter(tx => tx.vout[0].address !== 'NON_STANDARD')
       .reduce((acc, tx) => acc.plus(tx.vout.reduce((a, t) => {
-        if (t.address === req.params.hash) {
-          return a.plus(BigNumber(t.value))
-        } else {
-          return a
+        if (req.params) {
+          if (t.address === req.params.hash) {
+            return a.plus(BigNumber(t.value))
+          } else {
+            return a
+          }
         }
       }, BigNumber(0.0))), BigNumber(0.0))
 
     const staked = txs.filter(tx => tx.vout[0].address === 'NON_STANDARD')
       .reduce((acc, tx) => acc.minus(tx.vin.reduce((a, t) => {
-        if (t.address === req.params.hash) {
-          return a.plus(BigNumber(t.value))
-        } else {
-          return a
+        if (req.params) {
+          if (t.address === req.params.hash) {
+            return a.plus(BigNumber(t.value))
+          } else {
+            return a
+          }
         }
       }, BigNumber(0.0))).plus(tx.vout.reduce((a, t) => {
-        if (t.address === req.params.hash) {
-          return a.plus(BigNumber(t.value))
-        } else {
-          return a
+        if (req.params) {
+          if (t.address === req.params.hash) {
+            return a.plus(BigNumber(t.value))
+          } else {
+            return a
+          }
         }
       }, BigNumber(0.0))), BigNumber(0.0))
 

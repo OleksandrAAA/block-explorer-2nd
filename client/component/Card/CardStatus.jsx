@@ -33,7 +33,7 @@ export default class CardStatus extends Component {
 
     return (
       <div className="animated fadeInUp">
-      <Card title="Status" className="card--status" >
+      <Card title="Chesscoin" className="card--status" >
         <div className="card__row">
           <span className="card__label">Status:</span>
           <span className="card__result card__result--status">
