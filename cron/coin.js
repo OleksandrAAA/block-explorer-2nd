@@ -14,9 +14,6 @@ const Coin = require('../model/coin');
  */
 async function syncCoin() {
   const date = moment().utc().startOf('minute').toDate();
-  // Setup the coinmarketcap.com api url.
-  //const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }`;  // bulwark
-  //const url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1281&CMC_PRO_API_KEY=5ca8732a-1676-4d5b-807b-eae694fee117";  // ion
   const url = "https://api.coingecko.com/api/v3/coins/chesscoin-0-32?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false";
   const info = await rpc.call('getinfo');
 
@@ -33,7 +30,7 @@ async function syncCoin() {
     diff: info['difficulty']['proof-of-stake'],
     mnsOff: 0,
     mnsOn: 0,
-    nethash: 0,
+    netHash: 0,
     peers: info.connections,
     status: 'Online',
     supply: market.total_supply,

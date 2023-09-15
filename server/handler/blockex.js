@@ -428,14 +428,15 @@ const getPeer = (req, res) => {
  */
 const getSupply = async (req, res) => {
   try {
-    let c = 0;
-    let t = 0;
 
-    const api = `${ config.api.host }${ config.api.prefix }`;
-    c = await fetch(`${ api }/circulating_supply`);
-    t = await fetch(`${ api }/total_supply`);
+    const url = "https://api.coingecko.com/api/v3/coins/chesscoin-0-32?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false";
+  
+    let market = await fetch(url);
+    if (market && market.market_data) {    
+      market = market['market_data'];
+    }
 
-    res.json({ c, t });
+    res.json(market.total_supply);
   } catch(err) {
     console.log(err);
     res.status(500).send(err.message || err);

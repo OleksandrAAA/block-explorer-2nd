@@ -113,16 +113,16 @@ const APIdata = [
         //   info: 'Returns the number of connections the block explorer has to other nodes.',
         //   path: '/ext/getdistribution'
         // },
-        {
-          name: 'getAddress',
-          info: 'Returns address information.',
-          path: '/ext/getaddress'
-        },
-        {
-          name: 'getBalance',
-          info: 'Returns the current balance.',
-          path: '/ext/getbalance'
-        },
+        // {
+        //   name: 'getAddress',
+        //   info: 'Returns address information.',
+        //   path: '/ext/getaddress'
+        // },
+        // {
+        //   name: 'getBalance',
+        //   info: 'Returns the current balance.',
+        //   path: '/ext/getbalance'
+        // },
         {
           name: 'getLastTXs',
           info: 'Returns the last transactions.',
