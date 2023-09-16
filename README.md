@@ -40,7 +40,7 @@ It is also required to have the Chesscoin daemon running in the background. It i
 #### Crontab
 The following automated tasks are currently needed for BlockEx to update but before running the tasks please update the cron script `/path/to/blockex/script/cron_block.sh` for the block with the local `/path/to/node`.
 
-`yarn run cron:coin` - will fetch coin related information like price and supply from coinmarketcap.com.
+`yarn run cron:coin` - will fetch coin related information like price and supply from coingecko.com.
 
 `yarn run cron:masternode` - updates the masternodes list in the database with the most recent information clearing old information before.
 

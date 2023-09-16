@@ -86,8 +86,10 @@ class Statistics extends Component {
         prices.set(k, c.usd);
       }
 
-      nethashes.set(c.blocks, c.netHash);
-      netdiffs.set(c.blocks, c.diff);
+      if (c.netHash > this.state.coins[0].blocks - 5000){
+        nethashes.set(c.blocks, c.netHash);
+        netdiffs.set(c.blocks, c.diff);
+      }
     });
 
     // Generate averages for each key in each map.

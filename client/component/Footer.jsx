@@ -27,9 +27,9 @@ class Footer extends Component {
         <div className="footer__block">
           <img className="footer__logo" src="/img/footerlogo.png" />
           <span className="footer__legal">
-            <div>Copyright &copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32% Developer</a></div>
-            <div>Site design&copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32% Developer</a></div>
-            <div>Logo &copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32% Developer</a></div>
+            <div>Logo &copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32%</a></div>
+            <div>Site design&copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32%</a></div>
+            <div>Copyright &copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32% Developers</a></div>
           </span>
         </div>
         <div className="footer__block">
@@ -53,7 +53,7 @@ class Footer extends Component {
         </div>
         <div className="footer__block">
           <div className="footer__social-media-wrapper">
-            <div className="footer__social-title">Social Media</div>
+            <div className="footer__social-title">Social Network</div>
             <div>
               <a href="https://t.me/ChessCoin032" target="_blank">
                 <Icon name="telegram" className="fab footer__social-media-icon" />
@@ -66,6 +66,9 @@ class Footer extends Component {
               </a>
               <a href="https://twitter.com/032ChessCoin" target="_blank">
                 <Icon name="twitter" className="fab footer__social-media-icon" />
+              </a>
+              <a href="https://www.coingecko.com/en/coins/chesscoin-0-32" target="_blank">
+                <img class="footer__social-image-icon" src="/img/coingecko.png" />
               </a>
             </div>
           </div>

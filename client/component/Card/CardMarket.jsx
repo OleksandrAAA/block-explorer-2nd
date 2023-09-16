@@ -44,7 +44,7 @@ export default class CardStatus extends Component {
             decimals={ 3 }
             duration={ 1 }
             end={ this.props.usd }
-            prefix={ 'CHESS $' }
+            prefix={ 'CHESS : $' }
             start={ 0 } />
         </p>
         <p className="card__data-sub">{ this.props.btc } BTC</p>

@@ -11,7 +11,6 @@ import React from 'react';
 
 import HorizontalRule from '../component/HorizontalRule';
 import Table from '../component/Table';
-import CoinSummary from '../container/CoinSummary';
 
 
 class Overview extends Component {
@@ -36,7 +35,7 @@ class Overview extends Component {
   };
 
   componentDidMount(){
-      this.props.setData({isToken: false});
+      this.props.setData();
   }
 
   render() {

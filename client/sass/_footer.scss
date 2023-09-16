@@ -6,7 +6,7 @@
 	border-top: 1px solid rgba(34, 34, 34, 0.1);
 	bottom: 0;
 	flex-wrap: wrap;
-	font-size: .8em;
+	font-size: .9em;
 	padding-top: 2em;
 	justify-content: space-around;
 	/* Negative used to compensate for content padding */
@@ -42,7 +42,7 @@
 	}
 
 	&__legal {
-		font-size: .9em;
+		//font-size: .9em;
 		line-height: 2;
 	}
 
@@ -67,7 +67,22 @@
 		&:focus {
 			color: initial;
 		}
+	}
 
+	&__social-image-icon {
+		width: 30px;
+		height:auto;
+		color: $gray;
+		opacity: 0.5;
+		font-size: 2em;
+		margin-right: .5em;
+		vertical-align: -.15em;
+
+		&:hover,
+		&:focus {
+		    opacity: 1.0;
+    		border: 0px solid transparent;	
+		}
 	}
 
 	@include media-breakpoint-up(md) {

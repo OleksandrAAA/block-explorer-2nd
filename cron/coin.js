@@ -10,7 +10,7 @@ const Coin = require('../model/coin');
 
 /**
  * Get the coin related information including things
- * like price coinmarketcap.com data.
+ * like price coingecko.com data.
  */
 async function syncCoin() {
   const date = moment().utc().startOf('minute').toDate();

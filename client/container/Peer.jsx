@@ -43,7 +43,7 @@ class Peer extends Component {
 
     return (
       <div>
-        <HorizontalRule title="Network" />
+        <HorizontalRule title="Network Peers" />
         <Table
           cols={ this.state.cols }
           data={ this.state.peers.map(peer => ({
