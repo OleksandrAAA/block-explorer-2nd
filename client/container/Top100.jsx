@@ -26,7 +26,7 @@ class Top100 extends Component {
       cols: [
         { key: 'index', title: '#' },
         { key: 'address', title: 'Address' },
-        { key: 'value', title: 'Total' },
+        { key: 'value', title: 'Total (CHESS)' },
         { key: 'percent', title: '%' },
       ],
       wallets: []

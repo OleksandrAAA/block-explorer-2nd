@@ -14,7 +14,6 @@ import searchHistory from '../lib/searchHistory';
 import Address from './container/Address';
 import API from './container/API';
 import Block from './container/Block';
-import CoinInfo from './container/CoinInfo';
 import Error404 from './container/Error404';
 import FAQ from './container/FAQ';
 import Masternode from './container/Masternode';
@@ -24,8 +23,7 @@ import Peer from './container/Peer';
 import Statistics from './container/Statistics';
 import Top100 from './container/Top100';
 import TX from './container/TX';
-import TokenList from './container/TokenList';
-import TokenInfo from './container/TokenInfo';
+
 // Layout
 import CoinSummary from './container/CoinSummary';
 import Footer from './component/Footer';
@@ -165,7 +163,6 @@ class App extends Component {
                   <Route exact path="/address/:hash" component={ Address } />
                   <Route exact path="/api" component={ API } />
                   <Route exact path="/block/:hash" component={ Block } />
-                  <Route exact path="/coin" component={ CoinInfo } />
                   <Route exact path="/faq" component={ FAQ } />
                   <Route exact path="/movement" component={ Movement } />
                   <Route exact path="/peer" component={ Peer } />

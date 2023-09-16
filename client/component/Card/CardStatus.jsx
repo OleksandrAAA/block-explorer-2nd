@@ -8,14 +8,14 @@ import Card from './Card';
 import CountUp from '../CountUp';
 
 function formatNumberWithAbbreviation(number) {
-  if (isNaN(number)) return null;
+  if (isNaN(number)) return '0';
 
   if (number >= 1e9) {
-    return (number / 1e9).toFixed(2) + 'B';
+    return (number / 1e9).toFixed(2) + ' B';
   } else if (number >= 1e6) {
-    return (number / 1e6).toFixed(2) + 'M';
+    return (number / 1e6).toFixed(2) + ' M';
   } else if (number >= 1e3) {
-    return (number / 1e3).toFixed(2) + 'K';
+    return (number / 1e3).toFixed(2) + ' K';
   } else {
     return number.toFixed(2);
   }

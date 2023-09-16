@@ -8,11 +8,8 @@ import React from 'react';
 import Icon from '../component/Icon';
 
 import CardMarket from '../component/Card/CardMarket';
-import CardMasternodeSummary from '../component/Card/CardMasternodeSummary';
 import CardNetworkSummary from '../component/Card/CardNetworkSummary';
-import CardPoS from '../component/Card/CardPoS';
 import CardStatus from '../component/Card/CardStatus';
-import CardTokenInfo from '../component/Card/CardTokensInfo';
 import WatchList from '../component/WatchList';
 
 class CoinSummary extends Component {

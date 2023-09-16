@@ -25,7 +25,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: #080808;
+  background: #303030;
   font-family: 'Poppins', sans-serif;
   color: #ffffff;
 }
@@ -83,10 +83,10 @@ a {
     <div class="logo">
       </div>
     <div class="container">
-        <img src="https://media.giphy.com/media/vIDsZm5DMZ5Ha/giphy.gif" title="Sad Explorer."/>
+        <img src="https://i.ibb.co/RC6L9S7/whitelogo.png" title="Sad Explorer."/>
       <h1>Maintenance</h1>
       <p>Chesscoin 0.32% Explorer is not available at this moment.<br/>Please check back later.</p><br/>
-  <a href="https://ionomy.com/" class="button">Back to Main</a>
+  <a href="https://chesscoin032.com/" class="button">Back to Main</a>
       </div>
   </body>
 </html>

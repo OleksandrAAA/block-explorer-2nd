@@ -63,6 +63,7 @@ class Statistics extends Component {
     const netdiffs = new Map();
 
     const hashes = new Map();
+    const diffs = new Map();
     const prices = new Map();
     this.state.coins.forEach((c, idx) => {
       const k = moment(c.createdAt).format('MMM DD');
@@ -71,6 +72,12 @@ class Statistics extends Component {
         hashes.set(k, hashes.get(k) + c.netHash);
       } else {
         hashes.set(k, c.netHash);
+      }
+
+      if (diffs.has(k)) {
+        diffs.set(k, diffs.get(k) + c.diff);
+      } else {
+        diffs.set(k, c.diff);
       }
 
       if (prices.has(k)) {
@@ -85,7 +92,7 @@ class Statistics extends Component {
 
     // Generate averages for each key in each map.
     const l = (24 * 60) / 5; // How many 5 min intervals in a day.
-    let avgHash, avgPrice = 0.0;
+    let avgHash, avfDiff, avgPrice = 0.0;
     let hashLabel = 'H/s';
     hashes.forEach((v, k) => {
       const { hash, label } = this.formatNetHash(v / l);
@@ -93,12 +100,17 @@ class Statistics extends Component {
       avgHash += hash;
       hashes.set(k, numeral(hash).format('0,0.00'));
     });
+    diffs.forEach((v, k) => {
+      avfDiff += v / l;
+      diffs.set(k, numeral(v / l).format('0,0.0000'));
+    });
     prices.forEach((v, k) => {
       avgPrice += v / l;
       prices.set(k, numeral(v / l).format('0,0.00'));
     });
     avgHash = avgHash / hashes.size;
     avgPrice = avgPrice / prices.size;
+    avfDiff = avfDiff / diffs.size;
 
     // Get the current hash format and label.
     const netHash = this.formatNetHash(this.props.coin.netHash);
@@ -143,7 +155,7 @@ class Statistics extends Component {
           </div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <h3>CHESS Price (USD)</h3>
+              <h3>CHESS Price (USD) Last 7 Days</h3>
               <h4>{ numeral(this.props.coin.usd).format('$0,0.00') } { day }</h4>
               <h5>{ numeral(this.props.coin.btc).format('0.00000000') } BTC</h5>
               <div>

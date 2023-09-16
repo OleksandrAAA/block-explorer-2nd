@@ -36,6 +36,8 @@ class Movement extends Component {
     this.getTXs();
   };
 
+
+
   componentWillUnmount() {
     if (this.debounce) {
       clearTimeout(this.debounce);
