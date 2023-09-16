@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 /* Validate Config */
 if (!config.db.user || !config.db.pass) {
-  console.log("Invalid user and/or password. User:", config.db.user, "Pass:", config.db.pass);
+  console.log("Mongo: Invalid user and/or password. User:", config.db.user, "Pass:", config.db.pass);
   process.exit(1);
 }
 

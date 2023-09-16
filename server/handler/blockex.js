@@ -506,7 +506,7 @@ const getTX = async (req, res) => {
     // Get the transactions that are found in the
     // vin section of the tx.
     const vin = [];
-    console.log('tx: ', tx.vin);
+
     await forEach(tx.vin, async (vi) => {
       if (tx.vout[0].address === 'NON_STANDARD' && !vi.coinbase) {
         const t = await TX.findOne({txId: vi.txId})
@@ -526,7 +526,6 @@ const getTX = async (req, res) => {
         vin.push(vi);
       }
     });
-    console.log('res: ', { ...tx.toObject(), vin });
 
     res.json({ ...tx.toObject(), vin });
   } catch(err) {

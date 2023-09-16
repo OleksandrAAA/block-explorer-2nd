@@ -7,6 +7,20 @@ import React from 'react';
 import Card from './Card';
 import CountUp from '../CountUp';
 
+function formatNumberWithAbbreviation(number) {
+  if (isNaN(number)) return null;
+
+  if (number >= 1e9) {
+    return (number / 1e9).toFixed(2) + 'B';
+  } else if (number >= 1e6) {
+    return (number / 1e6).toFixed(2) + 'M';
+  } else if (number >= 1e3) {
+    return (number / 1e3).toFixed(2) + 'K';
+  } else {
+    return number.toFixed(2);
+  }
+}
+
 export default class CardStatus extends Component {
   static defaultProps = {
     avgBlockTime: 90,
@@ -16,6 +30,7 @@ export default class CardStatus extends Component {
     status: 'Offline',
     supply: 0,
     diff: 0,
+    marketcap:0,
   };
 
   static propTypes = {
@@ -25,7 +40,8 @@ export default class CardStatus extends Component {
     peers: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
     supply: PropTypes.number.isRequired,
-    diff: PropTypes.number.isRequired
+    diff: PropTypes.number.isRequired,
+    marketcap: PropTypes.number.isRequired
   };
 
   render() {
@@ -33,15 +49,7 @@ export default class CardStatus extends Component {
 
     return (
       <div className="animated fadeInUp">
-      <Card title="Chesscoin" className="card--status" >
-        <div className="card__row">
-          <span className="card__label">Status:</span>
-          <span className="card__result card__result--status">
-            <span className={ `u--text-${ isOn ? 'green' : 'red' }`}>
-              { this.props.status }
-            </span>
-          </span>
-        </div>
+      <Card title="Status" className="card--status" >
         <div className="card__row">
           <span className="card__label">Block Height:</span>
           <span className="card__result">
@@ -67,6 +75,12 @@ export default class CardStatus extends Component {
                   end={ this.props.supply }
                   start={ 0 } />
               </b>
+          </span>
+        </div>
+        <div className="card__row">
+          <span className="card__label">Market Cap:</span>
+          <span className="card__result">
+            <b> ${formatNumberWithAbbreviation(this.props.marketcap)} </b>
           </span>
         </div>
         <div className="card__row">

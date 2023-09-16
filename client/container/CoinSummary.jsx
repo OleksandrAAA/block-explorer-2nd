@@ -53,6 +53,7 @@ class CoinSummary extends Component {
                   peers={ coin.peers }
                   status={ coin.status }
                   supply={ coin.supply } 
+                  marketcap={ coin.supply * coin.usd }
                   diff={ coin.diff } />
               </div>
               <div className="col-md-12 col-lg-6">

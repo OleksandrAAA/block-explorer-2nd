@@ -59,8 +59,10 @@ class Statistics extends Component {
     const avgTX = ((tTX / 7) / 24) / this.state.txs.length;
 
     // Setup graph data objects.
+    const nethashes = new Map();
+    const netdiffs = new Map();
+
     const hashes = new Map();
-    const mns = new Map();
     const prices = new Map();
     this.state.coins.forEach((c, idx) => {
       const k = moment(c.createdAt).format('MMM DD');
@@ -71,22 +73,19 @@ class Statistics extends Component {
         hashes.set(k, c.netHash);
       }
 
-      if (mns.has(k)) {
-        mns.set(k, mns.get(k) + c.mnsOn);
-      } else {
-        mns.set(k, c.mnsOn);
-      }
-
       if (prices.has(k)) {
         prices.set(k, prices.get(k) + c.usd);
       } else {
         prices.set(k, c.usd);
       }
+
+      nethashes.set(c.blocks, c.netHash);
+      netdiffs.set(c.blocks, c.diff);
     });
 
     // Generate averages for each key in each map.
     const l = (24 * 60) / 5; // How many 5 min intervals in a day.
-    let avgHash, avgMN, avgPrice = 0.0;
+    let avgHash, avgPrice = 0.0;
     let hashLabel = 'H/s';
     hashes.forEach((v, k) => {
       const { hash, label } = this.formatNetHash(v / l);
@@ -94,16 +93,11 @@ class Statistics extends Component {
       avgHash += hash;
       hashes.set(k, numeral(hash).format('0,0.00'));
     });
-    mns.forEach((v, k) => {
-      avgMN += v / l;
-      mns.set(k, numeral(v / l).format('0,0'));
-    });
     prices.forEach((v, k) => {
       avgPrice += v / l;
       prices.set(k, numeral(v / l).format('0,0.00'));
     });
     avgHash = avgHash / hashes.size;
-    avgMN = avgMN / mns.size;
     avgPrice = avgPrice / prices.size;
 
     // Get the current hash format and label.
@@ -120,20 +114,44 @@ class Statistics extends Component {
 
     return (
       <div className="animated fadeInUp">
-        <HorizontalRule title="Markets" />
+        <HorizontalRule title="Statistics" />
         { Array.from(hashes.keys()).slice(1, -1).length <= 6 && <Notification /> }
         <div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <h3>Network Hash Rate Last 7 Days</h3>
+              <h3>Network Hash Rate</h3>
               <h4>{ numeral(netHash.hash).format('0,0.0000') } { netHash.label }/s { day }</h4>
-              <h5>Difficulty: { numeral(this.props.coin.diff).format('0,0.0000') }</h5>
               <div>
                 <GraphLineFull
                   color="#1991eb"
-                  data={ Array.from(hashes.values()).slice(1, -1) }
+                  data={ Array.from(nethashes.values()).slice(1, -1) }
                   height="420px"
-                  labels={ Array.from(hashes.keys()).slice(1, -1) } />
+                  labels={ Array.from(nethashes.keys()).slice(1, -1) } />
+              </div>
+            </div>
+            <div className="col-md-12 col-lg-6">
+              <h3>Network Difficulty</h3>
+              <h4>{ numeral(this.props.coin.diff).format('0,0.0000') } { day }</h4>
+              <div>
+                <GraphLineFull
+                  color="#1991eb"
+                  data={ Array.from(netdiffs.values()).slice(1, -1) }
+                  height="420px"
+                  labels={ Array.from(netdiffs.keys()).slice(1, -1) } />
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12 col-lg-6">
+              <h3>CHESS Price (USD)</h3>
+              <h4>{ numeral(this.props.coin.usd).format('$0,0.00') } { day }</h4>
+              <h5>{ numeral(this.props.coin.btc).format('0.00000000') } BTC</h5>
+              <div>
+                <GraphLineFull
+                  color="#1991eb"
+                  data={ Array.from(prices.values()).slice(1, -1) }
+                  height="420px"
+                  labels={ Array.from(prices.keys()).slice(1, -1) } />
               </div>
             </div>
             <div className="col-md-12 col-lg-6">
@@ -146,32 +164,6 @@ class Statistics extends Component {
                   data={ Array.from(txs.values()) }
                   height="420px"
                   labels={ Array.from(txs.keys()) } />
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12 col-lg-6">
-              <h3>CHESS Price USD</h3>
-              <h4>{ numeral(this.props.coin.usd).format('$0,0.00') } { day }</h4>
-              <h5>{ numeral(this.props.coin.btc).format('0.00000000') } BTC</h5>
-              <div>
-                <GraphLineFull
-                  color="#1991eb"
-                  data={ Array.from(prices.values()).slice(1, -1) }
-                  height="420px"
-                  labels={ Array.from(prices.keys()).slice(1, -1) } />
-              </div>
-            </div>
-            <div className="col-md-12 col-lg-6">
-              <h3>Masternodes Online Last 7 Days</h3>
-              <h4>{ this.props.coin.mnsOn } { day }</h4>
-              <h5>Seen: { this.props.coin.mnsOn + this.props.coin.mnsOff }</h5>
-              <div>
-                <GraphLineFull
-                  color="#1991eb"
-                  data={ Array.from(mns.values()).slice(1, -1) }
-                  height="420px"
-                  labels={ Array.from(mns.keys()).slice(1, -1) } />
               </div>
             </div>
           </div>
