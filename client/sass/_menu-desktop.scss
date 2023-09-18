@@ -80,8 +80,7 @@
 		margin-right: 0.75em;
 		margin-left: 1em;
 		/* Used to align with searchbar */
-		width: 140px;
-		scale: 0.9;
+		width: 120px;
 	}
 
 	&__title {
@@ -107,9 +106,9 @@
 	}
 
 	&__item-icon {
-		height: 28px;
+		height: 24px;
 		transition: all 1s cubic-bezier(0, 1, .5, 1);
-		width: 28px;
+		width: 24px;
 	}
 
 	&__item-label {
@@ -120,7 +119,6 @@
 		transition: all 1s cubic-bezier(0, 1, .5, 1);
 		/*Prevent text wrapping when width is changed*/
 		white-space: nowrap;
-		font-size: 20px;
 	}
 
 	&__item-indicator {

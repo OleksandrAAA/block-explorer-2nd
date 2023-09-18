@@ -68,12 +68,3 @@ At this time only the client web interface needs to be built using webpack and t
 `yarn run start:api` - will start the api.
 
 `yarn run start:web` - will start the web, open browser [http://localhost:8081](http://localhost:8081).
-
-## Test
-`yarn run test:client` - will run the client side tests.
-
-`yarn run test:server` - will test the rpc connection, database connection, and api endpoints.
-
-## To-Do
-- Write more tests
-- Cluster support for api
