@@ -27,9 +27,9 @@ class Footer extends Component {
         <div className="footer__block">
           <img className="footer__logo" src="/img/footerlogo.png" />
           <span className="footer__legal">
-            <div>Logo &copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32%</a></div>
-            <div>Site design&copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32%</a></div>
-            <div>Copyright &copy; 2023 <a href="https://chesscoin032.com/">Chesscoin 0.32% Developers</a></div>
+            <div>Web site: <a href="https://chesscoin032.com/"> https://chesscoin032.com/</a></div>
+            <div>Logo &copy; 2023 Chesscoin 0.32%</div>
+            <div>Copyright &copy; 2023 Chesscoin 0.32% Developers</div>
           </span>
         </div>
         <div className="footer__block">

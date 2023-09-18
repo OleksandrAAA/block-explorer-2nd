@@ -62,8 +62,7 @@ class Overview extends Component {
     let props = this.props;
     return (
       <div>
-        <HorizontalRule 
-          title="Latest Blocks" />
+        <HorizontalRule title="Latest Blocks" />
         <Table
           cols={ this.state.cols }
           data={ txs } />

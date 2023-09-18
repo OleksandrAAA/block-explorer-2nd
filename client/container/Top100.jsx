@@ -24,10 +24,10 @@ class Top100 extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'index', title: '#' },
+        { key: 'index', title: 'Rank' },
         { key: 'address', title: 'Address' },
         { key: 'value', title: 'Balance (CHESS)' },
-        { key: 'percent', title: '%' },
+        { key: 'percent', title: 'Percent (%)' },
       ],
       wallets: []
     };

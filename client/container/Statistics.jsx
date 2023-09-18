@@ -86,7 +86,7 @@ class Statistics extends Component {
         prices.set(k, c.usd);
       }
 
-      if (c.netHash > this.state.coins[0].blocks - 5000){
+      if (c.netHash > this.state.coins[0].blocks - 5000) {
         nethashes.set(c.blocks, c.netHash);
         netdiffs.set(c.blocks, c.diff);
       }
