@@ -29,7 +29,7 @@ class Overview extends Component {
         {title: 'Value', key: 'vout'},
         'age',
         'recipients',
-        {title: 'Created', key: 'createdAt'},
+        {title: 'Timestamp', key: 'createdAt'},
       ]
     };
   };

@@ -22,7 +22,7 @@ export default class CardBlockTXs extends Component {
       cols: [
         { key: 'txId', title: 'Transaction ID' },
         { key: 'recipients', title: 'Recipients' },
-        { key: 'createdAt', title: 'Time' },
+        { key: 'createdAt', title: 'Timestamp' },
       ]
     };
   };

@@ -25,7 +25,7 @@ export default class CardAddressTXs extends Component {
       cols: [
         { key: 'txId', title: 'Transaction ID' },
         { key: 'amount', title: 'Amount' },
-        { key: 'createdAt', title: 'Time' },
+        { key: 'createdAt', title: 'Timestamp' },
       ]
     };
   };

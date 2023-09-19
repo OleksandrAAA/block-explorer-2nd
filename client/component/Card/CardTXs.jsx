@@ -25,7 +25,7 @@ export default class CardTXs extends Component {
         { key: 'blockHeight', title: 'Block Height' },
         { key: 'txId', title: 'Transaction Hash' },
         { key: 'vout', title: 'Amount' },
-        { key: 'createdAt', title: 'Time' },
+        { key: 'createdAt', title: 'Timestamp' },
       ]
     };
   };
