@@ -1,6 +1,8 @@
 Bulwark - Adapted for Chesscoin 0.32%
 =====
 
+https://liveexplorer.chesscoin032.com
+
 Simple cryptocurrency block explorer system.
 
 ## Required
