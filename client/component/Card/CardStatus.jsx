@@ -7,20 +7,6 @@ import React from 'react';
 import Card from './Card';
 import CountUp from '../CountUp';
 
-function formatNumberWithAbbreviation(number) {
-  if (isNaN(number)) return '0';
-
-  if (number >= 1e9) {
-    return (number / 1e9).toFixed(2) + ' B';
-  } else if (number >= 1e6) {
-    return (number / 1e6).toFixed(2) + ' M';
-  } else if (number >= 1e3) {
-    return (number / 1e3).toFixed(2) + ' K';
-  } else {
-    return number.toFixed(2);
-  }
-}
-
 export default class CardStatus extends Component {
   static defaultProps = {
     avgBlockTime: 90,
@@ -80,7 +66,7 @@ export default class CardStatus extends Component {
         <div className="card__row">
           <span className="card__label">Market Cap:</span>
           <span className="card__result">
-            <b> ${formatNumberWithAbbreviation(this.props.marketcap)} </b>
+            <b> ${this.formatNumberWithAbbreviation(this.props.marketcap)} </b>
           </span>
         </div>
         <div className="card__row">

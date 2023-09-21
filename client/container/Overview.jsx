@@ -2,7 +2,7 @@
 import Actions from '../core/Actions';
 import Component from '../core/Component';
 import { connect } from 'react-redux';
-import { date24Format } from '../../lib/date';
+import { date24Format, calculateTimeDifference } from '../../lib/date';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
@@ -11,7 +11,6 @@ import React from 'react';
 
 import HorizontalRule from '../component/HorizontalRule';
 import Table from '../component/Table';
-
 
 class Overview extends Component {
   static propTypes = {
@@ -50,7 +49,7 @@ class Overview extends Component {
 
       return ({
         ...tx,
-        age: diffSeconds < 60 ? `${ diffSeconds } seconds` : createdAt.fromNow(true),
+        age: diffSeconds < 60 ? `${ diffSeconds } seconds` : calculateTimeDifference(createdAt),
         blockHeight: (<Link to={ `/block/${ tx.blockHeight }` }>{ tx.blockHeight }</Link>),
         createdAt: date24Format(tx.createdAt),
         recipients: tx.vout.length,

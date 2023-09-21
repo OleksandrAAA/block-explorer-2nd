@@ -1,6 +1,6 @@
 
 import Component from '../../core/Component';
-import { date24Format } from '../../../lib/date'
+import { date24Format, calculateTimeDifference } from '../../../lib/date'
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
@@ -23,6 +23,7 @@ export default class CardTXs extends Component {
     this.state = {
       cols: [
         { key: 'blockHeight', title: 'Block Height' },
+        'age',
         { key: 'txId', title: 'Transaction Hash' },
         { key: 'vout', title: 'Amount' },
         { key: 'createdAt', title: 'Timestamp' },
@@ -35,6 +36,8 @@ export default class CardTXs extends Component {
       <Table
         cols={ this.state.cols }
         data={ this.props.txs.map(tx => {
+          const createdAt = moment(tx.createdAt).utc();
+          const diffSeconds = moment().utc().diff(createdAt, 'seconds');
           let blockValue = 0.0;
           if (tx.vout && tx.vout.length) {
             tx.vout.forEach(vout => blockValue += vout.value);
@@ -47,6 +50,7 @@ export default class CardTXs extends Component {
                 { tx.blockHeight }
               </Link>
             ),
+            age: diffSeconds < 60 ? `${ diffSeconds } seconds` : calculateTimeDifference(createdAt),            
             createdAt: date24Format(tx.createdAt),
             txId: (
               <Link to={ `/tx/${ tx.txId }` }>
