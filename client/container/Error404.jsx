@@ -5,7 +5,10 @@ import React from 'react';
 export default class Error404 extends Component {
   render() {
     return (
-      <h1>Error 404</h1>
+      <div>
+        <h1>Error 404 - Page Not Found</h1>
+        <p>The requested page could not be found.</p>
+      </div>
     );
   };
 }

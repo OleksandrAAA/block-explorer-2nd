@@ -22,7 +22,7 @@ export default class CardTXs extends Component {
     super(props);
     this.state = {
       cols: [
-        { key: 'blockHeight', title: 'Block Height' },
+        { key: 'blockHeight', title: 'Height' },
         'age',
         { key: 'txId', title: 'Transaction Hash' },
         { key: 'vout', title: 'Amount' },

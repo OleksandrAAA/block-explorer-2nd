@@ -68,7 +68,7 @@ class Movement extends Component {
             }
           })
           .catch(error => this.setState({ error, loading: false }));
-      }, 800);
+      }, 1500);
     });
   };
 
