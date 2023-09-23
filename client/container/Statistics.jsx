@@ -100,7 +100,7 @@ class Statistics extends Component {
       const { hash, label } = this.formatNetHash(v / l);
       hashLabel = label; // For use in graph.
       avgHash += hash;
-      hashes.set(k, numeral(hash).format('0,0.00'));
+      hashes.set(k, numeral(hash).format('0,0.000'));
     });
     diffs.forEach((v, k) => {
       avfDiff += v / l;
@@ -108,7 +108,7 @@ class Statistics extends Component {
     });
     prices.forEach((v, k) => {
       avgPrice += v / l;
-      prices.set(k, numeral(v / l).format('0,0.00'));
+      prices.set(k, numeral(v / l).format('0,0.000'));
     });
     avgHash = avgHash / hashes.size;
     avgPrice = avgPrice / prices.size;
@@ -133,32 +133,32 @@ class Statistics extends Component {
         <div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <h3>Network Hash Rate</h3>
+              <h3>Network Hash Rate Last 7 Days</h3>
               <h4>{ numeral(netHash.hash).format('0,0.0000') } { netHash.label }/s { day }</h4>
               <div>
                 <GraphLineFull
                   color="#1991eb"
-                  data={ Array.from(nethashes.values()).slice(1, -1) }
+                  data={ Array.from(hashes.values()).slice(1, -1) }
                   height="420px"
-                  labels={ Array.from(nethashes.keys()).slice(1, -1) } />
+                  labels={ Array.from(hashes.keys()).slice(1, -1) } />
               </div>
             </div>
             <div className="col-md-12 col-lg-6">
-              <h3>Network Difficulty</h3>
+              <h3>Network Difficulty Last 7 Days</h3>
               <h4>{ numeral(this.props.coin.diff).format('0,0.0000') } { day }</h4>
               <div>
                 <GraphLineFull
                   color="#1991eb"
-                  data={ Array.from(netdiffs.values()).slice(1, -1) }
+                  data={ Array.from(diffs.values()).slice(1, -1) }
                   height="420px"
-                  labels={ Array.from(netdiffs.keys()).slice(1, -1) } />
+                  labels={ Array.from(diffs.keys()).slice(1, -1) } />
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
               <h3>CHESS Price (USD) Last 7 Days</h3>
-              <h4>{ numeral(this.props.coin.usd).format('$0,0.00') } { day }</h4>
+              <h4>{ numeral(this.props.coin.usd).format('$0,0.000') } { day }</h4>
               <h5>{ numeral(this.props.coin.btc).format('0.00000000') } BTC</h5>
               <div>
                 <GraphLineFull
